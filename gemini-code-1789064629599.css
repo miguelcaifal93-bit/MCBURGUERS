@@ -1,0 +1,145 @@
+/* VARIABLES DE DISEÑO Y RESET */
+:root {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --accent-color: #ff4757;
+  --text-main: #f1f1f1;
+  --text-muted: #aaaaaa;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding-bottom: 50px;
+}
+
+/* ENCABEZADO */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #1f1f1f 0%, var(--bg-color) 100%);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* CONTENEDOR Y SECCIONES */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.menu-section {
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 12px;
+  margin-bottom: 25px;
+}
+
+/* GRID RESPONSIVO PARA ALINEAR TARJETAS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* TARJETAS DE PRODUCTO */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* CONTENEDOR DE IMÁGENES */
+.card-img-wrapper {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+/* AJUSTE PARA FOTOS DE HAMBURGUESAS (No se deforman) */
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed) ease;
+}
+
+.card:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+/* AJUSTE PARA FOTOS DE BEBIDAS (Para que la lata se vea entera) */
+.card-img-wrapper.beverage img {
+  object-fit: contain;
+  padding: 12px;
+}
+
+/* TEXTO DE LAS TARJETAS */
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.card-content .description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+/* ADAPTACIÓN MÓVIL */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
